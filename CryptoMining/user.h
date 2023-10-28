@@ -13,10 +13,12 @@ private:
 	std::shared_ptr<Computer> computer;
 	std::ostream& print(std::ostream& os) const override;
 public:
-	User(std::string, int, double, std::shared_ptr<Computer>);
+	User(std::string, double);
 	const std::string getName() const;
 	const int getStars() const;
 	const double getMoney() const; 
+	void setComputer(std::shared_ptr<Computer>);
+	void increaseMoney(double);
 	std::shared_ptr<Computer> getComputer();
 	~User();
 };

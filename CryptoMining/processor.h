@@ -3,7 +3,7 @@
 
 #include "component.h"
 
-class Processor : Component
+class Processor : public Component
 {
 private:
 	Processor();

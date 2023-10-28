@@ -142,6 +142,7 @@
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Computer.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="CryptoMining.cpp" />
     <ClCompile Include="Processor.cpp" />
     <ClCompile Include="ProcsessorType.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="component.h" />
     <ClInclude Include="computer.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="controller.h" />
     <ClInclude Include="processor.h" />
     <ClInclude Include="processor_type.h" />
     <ClInclude Include="user.h" />

@@ -48,3 +48,11 @@ const int Component::getLifeWorkingHours() const
 {
 	return this->lifeWorkingHours;
 }
+
+void Component::drainLife(int amoutOfHours) {
+	this->lifeWorkingHours -= amoutOfHours;
+
+	if (lifeWorkingHours < 0) {
+		throw std::invalid_argument("Component died!");
+	}
+}

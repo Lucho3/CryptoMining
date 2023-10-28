@@ -13,9 +13,10 @@ private:
     int ram;
     double minedAmountPerHour;
 	std::ostream& print(std::ostream& os) const override;
-private:
+public:
 	Computer(std::shared_ptr<Processor>, std::shared_ptr<VideoCard>, int);
 	~Computer();
+	const double getMinedAmountPerHour() const;
 	std::shared_ptr<Processor> getProcessor();
 	std::shared_ptr<VideoCard> getVideoCard();
 	const int getRam() const;

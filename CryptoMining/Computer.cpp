@@ -42,6 +42,11 @@ const int Computer::getRam() const
 	return this->ram;
 }
 
+const double Computer::getMinedAmountPerHour() const
+{
+	return this->minedAmountPerHour;
+}
+
 std::ostream& Computer::print(std::ostream& os) const {
 	os << "Computer Details:" << std::endl;
 	os << "  RAM: " << ram << " GB" << std::endl;

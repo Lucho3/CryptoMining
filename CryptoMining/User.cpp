@@ -1,6 +1,6 @@
 #include "User.h"
 
-User::User(std::string name, int stars, double money, std::shared_ptr<Computer> computer)
+User::User(std::string name, double money)
 {
 	if (name.empty()) {
 		throw std::invalid_argument("The name shall not be empty!");
@@ -11,8 +11,6 @@ User::User(std::string name, int stars, double money, std::shared_ptr<Computer> 
 
 	this->name = name;
 	this->money = money;
-	this->computer = computer;
-
 	this->stars = money / 100;
 }
 
@@ -34,4 +32,27 @@ std::shared_ptr<Computer> User::getComputer() {
 
 User::~User() {
 	this->computer.reset();
+}
+
+void User::increaseMoney(double money) {
+	this->money += money;
+}
+
+void User::setComputer(std::shared_ptr<Computer> cmp) {
+	this->computer = cmp;
+}
+
+
+std::ostream& User::print(std::ostream& os) const {
+	os << "User Details:" << std::endl;
+	os << "Name: " << name << std::endl;
+	os << "Stars: " << stars << std::endl;
+	os << "Money: $" << money << std::endl;
+
+	if (computer) {
+		os << this->computer;
+	}
+
+	os << std::endl;
+	return os;
 }
