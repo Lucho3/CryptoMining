@@ -24,11 +24,6 @@ Component::Component(std::string model, double price, int generation, int lifeWo
 	this->lifeWorkingHours = lifeWorkingHours;
 }
 
-Component::~Component()
-{
-	std::cout << "Component '" << getModel() << "' was destroyed!" << std::endl;
-}
-
 const std::string Component::getModel() const
 {
 	return this->model;

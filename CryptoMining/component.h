@@ -14,8 +14,6 @@ private:
 	int lifeWorkingHours;
 public:
 	Component(std::string, double, int, int);
-	~Component();
-
 	const std::string getModel() const;
 	const double getPrice() const;
 	const int getGeneration() const;
