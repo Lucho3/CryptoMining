@@ -2,9 +2,14 @@
 //
 
 #include <iostream>
+#include "common.h"
 
 int main()
 {
+    Common *c = new Common();
+    double q = 32;
+    std::variant<int, double, std::string> result = c->validate(q, "ProcessorGen", "asd");
+    std::cout<< std::get_if<int>(&result);
     std::cout << "Hello World!\n";
 }
 

@@ -51,6 +51,9 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>Source Files\Static Helpers Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.h">
@@ -77,7 +80,7 @@
     <ClInclude Include="videocard_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common.h">
+    <ClInclude Include="common.h">
       <Filter>Header Files\Static Helpers</Filter>
     </ClInclude>
     <ClInclude Include="controller.h">
