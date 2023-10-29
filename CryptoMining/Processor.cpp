@@ -1,8 +1,8 @@
 #include "processor.h"
 #include <iostream>
 
-Processor::Processor(std::string model, double price, int generation, int lifeWorkingHours, int mineMultiplier)
-	: Component(model, price, generation, lifeWorkingHours)
+Processor::Processor(std::string model, double price, int generation, int mineMultiplier)
+	: Component(model, price, generation, generation*100)
 {
 	if (generation > 9) {
 		throw std::invalid_argument("The generation shall be <= 9! ");

@@ -4,7 +4,7 @@
 #include "base.h"
 #include "computer.h"
 
-class User : Base {
+class User : public Base {
 private:
 	User();
 	std::string name;
@@ -19,6 +19,7 @@ public:
 	const double getMoney() const; 
 	void setComputer(std::shared_ptr<Computer>);
 	void increaseMoney(double);
+	void decreaseMoney(double);
 	std::shared_ptr<Computer> getComputer();
 	~User();
 };

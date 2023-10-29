@@ -3,14 +3,56 @@
 
 #include <iostream>
 #include "common.h"
+#include "controller.h"
+
+const int setGlobalMenu()  {
+    std::system("cls");
+    std::cout << "Manin Menu:\n";
+    std::cout << "0. Create user.\n";
+    std::cout << "1. Buy computer for user\n";
+    std::cout << "2. Mine\n";
+    std::cout << "3. User Info\n";
+    std::cout << "4. Shutdown\n";
+    int choice;
+    std::cin >> choice;
+    return choice;
+}
+
+
+void startApp(Controller * ctrl) {
+    std::string username;
+    while (true) {
+        switch (setGlobalMenu()) {
+        case 0:
+            ctrl->creteUser();
+            break;
+        case 1:
+            ctrl->initializeCmp();
+            break;
+        case 2:
+            ctrl->Mine();
+            break;
+        case 3:
+            std::cout << "Enter username: ";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::getline(std::cin, username);
+            ctrl->UserInfo(username);
+            break;
+        case 4:
+            ctrl->Shutdown();
+            return;
+        default:
+            std::cout << "Invalid choice. Please select a valid option.\n";
+        }
+    }
+}
 
 int main()
 {
-    Common *c = new Common();
-    double q = 32;
-    std::variant<int, double, std::string> result = c->validate(q, "ProcessorGen", "asd");
-    std::cout<< std::get_if<int>(&result);
-    std::cout << "Hello World!\n";
+    //singleton best here
+    Controller* ctrl = new Controller();
+    startApp(ctrl);
+    delete ctrl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

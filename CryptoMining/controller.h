@@ -17,9 +17,11 @@ public:
 	Controller();
 	~Controller();
 	std::string RegisterUser(std::string, double);
-	std::string CreateComputer(std::string, std::string, std::string, int, double, std::string, std::string, int, int, double);
+	void CreateComputer(std::string, std::string, std::string, int, double, std::string, std::string, int, int, double);
 	std::string Mine();
 	std::string UserInfo(std::string);
+	void initializeCmp();
+	void creteUser();
 	void Shutdown();
 };
 

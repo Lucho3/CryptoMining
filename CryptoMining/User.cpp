@@ -38,6 +38,10 @@ void User::increaseMoney(double money) {
 	this->money += money;
 }
 
+void User::decreaseMoney(double money) {
+	this->money -= money;
+}
+
 void User::setComputer(std::shared_ptr<Computer> cmp) {
 	this->computer = cmp;
 }

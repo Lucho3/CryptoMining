@@ -3,18 +3,18 @@
 
 #include "processor.h"
 
-class LowPerformanceProcessor : Processor {
+class LowPerformanceProcessor : public Processor {
 private:
 	LowPerformanceProcessor();
 public:
-	LowPerformanceProcessor(std::string, double, int, int);
+	LowPerformanceProcessor(std::string, double, int);
 };
 
-class HighPerformanceProcessor : Processor {
+class HighPerformanceProcessor : public Processor {
 private:
 	HighPerformanceProcessor();
 public:
-	HighPerformanceProcessor(std::string, double, int, int);
+	HighPerformanceProcessor(std::string, double, int);
 };
 
 #endif

@@ -10,7 +10,7 @@ private:
 	int mineMultiplier;
 	std::ostream& print(std::ostream& os) const override;
 public:
-	Processor(std::string, double, int, int, int);
+	Processor(std::string, double, int, int);
 	const int getMineMultiplier() const;
 };
 
