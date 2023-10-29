@@ -98,6 +98,7 @@ const std::any Common::validate(std::any value, const std::string valFunction, c
 	while (!validationFunction(value))
 	{
 		std::cout << "Invalid input. Please reenter " << prompt << ": ";
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(std::cin, option);
 		if (valueType == typeid(int))
 			value = std::stoi(option);

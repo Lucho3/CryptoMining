@@ -37,6 +37,7 @@ void startApp(Controller * ctrl) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::getline(std::cin, username);
             ctrl->UserInfo(username);
+            std::getchar();
             break;
         case 4:
             ctrl->Shutdown();

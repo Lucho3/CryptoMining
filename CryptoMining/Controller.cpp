@@ -77,14 +77,12 @@ std::string Controller::Mine() {
     return sstr.str();
 }
 
-std::string Controller::UserInfo(std::string name) {
-    std::ostringstream sstr;
+void Controller::UserInfo(std::string name) {
     std::shared_ptr<User> us = this->checkName(name);
     if (us != nullptr)
-        sstr << us;
+        std::cout << *us;
     else
-        sstr << "Unknown user!";
-    return sstr.str();
+        std::cout << "Unknown user!";
 }
 
 void Controller::Shutdown() {
@@ -93,7 +91,6 @@ void Controller::Shutdown() {
 }
 
 void Controller::CreateComputer(std::string name, std::string procType, std::string procModel, int procGen, double procPrice, std::string videoType, std::string videoModel, int videoGen, int RAM, double videoPrice) {
-    try {
         std::shared_ptr<User> us = this->checkName(name);
         if (!us) {
             std::cout << "User doesn not exists!" << std::endl;
@@ -109,15 +106,13 @@ void Controller::CreateComputer(std::string name, std::string procType, std::str
         }
         else
             std::cout << "Not enough!";
-    }
-    catch (const std::invalid_argument& ex) {
-        std::cerr << "Invalid argument: " << ex.what() << std::endl;
-    }
+    
 }
 
 void Controller::initializeCmp() {
     std::string name;
     std::cout << "Enter name: ";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::getline(std::cin, name);
     name = std::any_cast<std::string>(Common::validate(name, "Name", "the name "));
 
