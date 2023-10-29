@@ -1,23 +1,23 @@
 #include "Computer.h"
 #include <iostream>
 
-Computer::Computer(std::shared_ptr<Processor> processor, std::shared_ptr<VideoCard> videoCard, int ram)
+Computer::Computer(std::shared_ptr<Processor> proc, std::shared_ptr<VideoCard> videoC, int RAM)
 {
-	if (processor == nullptr) {
+	if (proc == nullptr) {
 		throw std::invalid_argument("There is no processor!");
 	}
-	if (videoCard == nullptr) {
+	if (videoC == nullptr) {
 		throw std::invalid_argument("There is no video card!");
 	}
-	if (ram < 0 || ram > 32) {
+	if (RAM < 0 || RAM > 32) {
 		throw std::invalid_argument("The ram sall be between 0 and 32");
 	}
 
-	this->processor = processor;
-	this->videoCard = videoCard;
-	this->ram = ram;
+	this->processor = proc;
+	this->videoCard = videoC;
+	this->ram = RAM;
 
-	this->minedAmountPerHour = processor->getMineMultiplier() * videoCard->getMinedMoneyPerHour();
+	this->minedAmountPerHour = this->processor->getMineMultiplier() * this->videoCard->getMinedMoneyPerHour();
 }
 
 Computer::~Computer()
@@ -29,7 +29,7 @@ Computer::~Computer()
 
 std::shared_ptr<Processor> Computer::getProcessor()
 {
-	return this->getProcessor();
+	return this->processor;
 }
 
 std::shared_ptr<VideoCard> Computer::getVideoCard()
@@ -54,10 +54,10 @@ std::ostream& Computer::print(std::ostream& os) const {
 	os << "  Mined Amount Per Hour: $" << minedAmountPerHour << std::endl;
 
 	if (processor) {
-		os << this->processor;
+		os << *this->processor;
 	}
 	if (videoCard) {
-		os << this->videoCard;
+		os << *this->videoCard;
 	}
 
 	return os;

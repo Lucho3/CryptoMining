@@ -4,6 +4,7 @@
 #include <iostream>
 #include "common.h"
 #include "controller.h"
+#include "processor_type.h"
 
 const int setGlobalMenu()  {
     std::system("cls");

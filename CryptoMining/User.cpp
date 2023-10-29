@@ -53,8 +53,8 @@ std::ostream& User::print(std::ostream& os) const {
 	os << "Stars: " << stars << std::endl;
 	os << "Money: $" << money << std::endl;
 
-	if (computer) {
-		os << this->computer;
+	if (this->computer) {
+		os << *this->computer;
 	}
 
 	os << std::endl;

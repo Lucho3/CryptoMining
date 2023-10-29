@@ -3,7 +3,7 @@
 
 #include "base.h"
 
-class Component : Base {
+class Component : public Base {
 private:
 	Component();
 	std::string model;

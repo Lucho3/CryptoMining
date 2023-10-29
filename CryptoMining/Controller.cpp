@@ -1,6 +1,8 @@
 #include "controller.h"
 #include "sstream"
 #include "common.h"
+#include "processor_type.h"
+#include "videocard_type.h"
 
 Controller::Controller() {
 
@@ -99,9 +101,9 @@ void Controller::CreateComputer(std::string name, std::string procType, std::str
         double money_for_pc = procPrice + videoPrice;
         if (us->getMoney() > money_for_pc) {
             us->decreaseMoney(money_for_pc);
-            std::shared_ptr<VideoCard> vc = Common::videoCardFactory(videoType, videoModel, videoPrice, videoGen, RAM);
             std::shared_ptr<Processor> prc = Common::processorFactory(procType, procModel, procPrice, procGen);
-            std::shared_ptr<Computer> cmp = std::make_shared<Computer>(prc, vc, 64);
+            std::shared_ptr<VideoCard> vc = Common::videoCardFactory(videoType, videoModel, videoPrice, videoGen, RAM);
+            std::shared_ptr<Computer> cmp = std::make_shared<Computer>(prc, vc, 16);
             us->setComputer(cmp);
         }
         else
@@ -132,12 +134,12 @@ void Controller::initializeCmp() {
 
     double procPrice;
     std::cout << "Enter proccessor price: ";
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin >> procPrice;
-    procGen = std::any_cast<double>(Common::validate(procPrice, "Price", "the processor price "));
+    procPrice = std::any_cast<double>(Common::validate(procPrice, "Price", "the processor price "));
 
     std::string videoType;
     std::cout << "Enter video card type: ";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::getline(std::cin, videoType);
 
     std::string videoModel;

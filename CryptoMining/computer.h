@@ -5,7 +5,7 @@
 #include "video_card.h"
 #include "base.h"
 
-class Computer : Base {
+class Computer : public Base {
 private:
     Computer();
     std::shared_ptr<Processor> processor;

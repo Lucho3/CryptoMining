@@ -1,14 +1,13 @@
 #include "processor.h"
 #include <iostream>
 
-Processor::Processor(std::string model, double price, int generation, int mineMultiplier)
-	: Component(model, price, generation, generation*100)
-{
+Processor::Processor(std::string model, double price, int generation, int mineMulti)
+	: Component(model, price, generation, generation*100) {
 	if (generation > 9) {
 		throw std::invalid_argument("The generation shall be <= 9! ");
 	}
 
-	this->mineMultiplier = mineMultiplier;
+	this->mineMultiplier = mineMulti;
 }
 
 const int Processor::getMineMultiplier() const {
