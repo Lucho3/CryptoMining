@@ -11,10 +11,6 @@ const bool Common::validateProcessorGen(int number) {
 	return false;
 }
 
-Common::Common() {
-
-}
-
 const bool Common::validateGen(int number) {
 	if (number > 0)
 		return true;
@@ -40,12 +36,11 @@ const bool Common::validateVideoRAM(int RAM) {
 }
 
 const bool Common::validateName(std::string model) {
-	//ppc ima i drugi proverki tuk ako ne me murzi
+	//Other checks if I have the time
 	if (!model.empty())
 		return true;
 	return false;
 }
-
 
 const bool Common::validateMoney(double price) {
 	if (price > 0)
@@ -53,9 +48,20 @@ const bool Common::validateMoney(double price) {
 	return false;
 }
 
+const bool Common::validateVideoType(std::string type) {
+	if (type == "Game" || type == "Mine")
+		return true;
+	return false;
+}
+
+const bool Common::validateProcType(std::string type) {
+	if (type == "Low" || type == "High")
+		return true;
+	return false;
+}
 
 std::function<bool(std::any)> Common::getValidationFunction(std::string validate) {
-	//returns lambda that accepts this variant moje i switch case
+	//moje i variant
 	return [validate](std::any arg) -> bool {
 		if (validate == "ProcessorGen") {
 			return validateProcessorGen(std::any_cast<int>(arg));
@@ -75,6 +81,12 @@ std::function<bool(std::any)> Common::getValidationFunction(std::string validate
 		else if (validate == "Name") {
 			return validateName(std::any_cast<std::string>(arg));
 		}
+		else if (validate == "Proc") {
+			return validateProcType(std::any_cast<std::string>(arg));
+		}
+		else if (validate == "Video") {
+			return validateVideoType(std::any_cast<std::string>(arg));
+		}
 		else if (validate == "Money") {
 			return validateMoney(std::any_cast<double>(arg));
 		}
@@ -83,8 +95,6 @@ std::function<bool(std::any)> Common::getValidationFunction(std::string validate
 		}
 	};
 }
-
-
 
 const std::type_info& Common::getValueType(std::any value) {
 	return value.type();
@@ -97,8 +107,8 @@ const std::any Common::validate(std::any value, const std::string valFunction, c
 	std::string option;
 	while (!validationFunction(value))
 	{
+		std::system("cls");
 		std::cout << "Invalid input. Please reenter " << prompt << ": ";
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(std::cin, option);
 		if (valueType == typeid(int))
 			value = std::stoi(option);
@@ -107,7 +117,6 @@ const std::any Common::validate(std::any value, const std::string valFunction, c
 		else
 			value = option;
 	}
-
 	return value;
 }
 
@@ -117,7 +126,7 @@ std::shared_ptr<VideoCard> Common::videoCardFactory(std::string type, std::strin
 	else if (type == "Mine")
 	    return std::make_shared<MineVideoCard>(model, price, generation, ram);
 	else
-		return nullptr;
+		throw std::invalid_argument("No such video card!");
 }
 
 std::shared_ptr<Processor> Common::processorFactory(std::string type, std::string model, double price, int generation) {
@@ -126,7 +135,7 @@ std::shared_ptr<Processor> Common::processorFactory(std::string type, std::strin
 	else if (type == "Low")
 		return std::make_shared<LowPerformanceProcessor>(model, price, generation);
 	else
-		return nullptr;
+		throw std::invalid_argument("No such processor!");
 }
 
 /*

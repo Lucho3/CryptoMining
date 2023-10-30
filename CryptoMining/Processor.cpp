@@ -3,6 +3,7 @@
 
 Processor::Processor(std::string model, double price, int generation, int mineMulti)
 	: Component(model, price, generation, generation*100) {
+
 	if (generation > 9) {
 		throw std::invalid_argument("The generation shall be <= 9! ");
 	}
@@ -21,8 +22,5 @@ std::ostream& Processor::print(std::ostream& os) const {
     os << "  Generation: " << getGeneration() << std::endl;;
     os << "  Life Working Hours: " << getLifeWorkingHours() << std::endl;;
     os << "  Mine Multiplier: " << mineMultiplier << std::endl;;
-
-    os << std::endl;
-
     return os;
 }

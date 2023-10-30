@@ -6,7 +6,6 @@
 class VideoCard : public Component
 {
 private:
-	VideoCard();
 	std::ostream& print(std::ostream& os) const override;
 	int ram;
 	double mindeMoneyPerHour;

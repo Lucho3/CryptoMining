@@ -1,7 +1,10 @@
 #include "User.h"
 
-User::User(std::string name, double money)
-{
+User::User() {
+	throw std::logic_error("Empty constructor is restricted");
+}
+
+User::User(std::string name, double money) {
 	if (name.empty()) {
 		throw std::invalid_argument("The name shall not be empty!");
 	}
@@ -57,6 +60,5 @@ std::ostream& User::print(std::ostream& os) const {
 		os << *this->computer;
 	}
 
-	os << std::endl;
 	return os;
 }

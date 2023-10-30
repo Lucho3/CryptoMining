@@ -6,7 +6,6 @@
 class Processor : public Component
 {
 private:
-	Processor();
 	int mineMultiplier;
 	std::ostream& print(std::ostream& os) const override;
 public:

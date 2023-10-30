@@ -1,13 +1,11 @@
 #include "component.h"
 #include <iostream>
 
-Component::Component()
-{
+Component::Component() {
 	throw std::logic_error("Empty constructor is restricted");
 }
 
-Component::Component(std::string model, double price, int generation, int lifeWorkingHours)
-{
+Component::Component(std::string model, double price, int generation, int lifeWorkingHours) {
 	if (model.empty()) {
 		throw std::invalid_argument("The model shall not be null or empty!");
 	}
@@ -24,35 +22,30 @@ Component::Component(std::string model, double price, int generation, int lifeWo
 	this->lifeWorkingHours = lifeWorkingHours;
 }
 
-const std::string Component::getModel() const
-{
+const std::string Component::getModel() const {
 	return this->model;
 }
 
-const double Component::getPrice() const
-{
+const double Component::getPrice() const {
 	return this->price;
 }
 
-const int Component::getGeneration() const
-{
+const int Component::getGeneration() const {
 	return this->generation;
 }
 
-void Component::setLifeWorkingHours(int hours)
-{
+void Component::setLifeWorkingHours(int hours) {
 	this->lifeWorkingHours = hours;
 }
 
-const int Component::getLifeWorkingHours() const
-{
+const int Component::getLifeWorkingHours() const {
 	return this->lifeWorkingHours;
 }
 
 void Component::drainLife(int amoutOfHours) {
-	this->lifeWorkingHours -= amoutOfHours;
-
-	if (lifeWorkingHours < 0) {
+	if (this->lifeWorkingHours - amoutOfHours < 0) {
 		throw std::invalid_argument("Component died!");
 	}
+
+	this->lifeWorkingHours -= amoutOfHours;
 }

@@ -13,12 +13,12 @@ private:
 	std::shared_ptr<User> checkName(std::string);
 	template <typename Container>
 	void ClearList(Container&);
+	void CreateComputer(std::string, std::string, std::string, int, double, std::string, std::string, int, int, double);
+	void RegisterUser(std::string, double);
 public:
 	Controller();
 	~Controller();
-	std::string RegisterUser(std::string, double);
-	void CreateComputer(std::string, std::string, std::string, int, double, std::string, std::string, int, int, double);
-	std::string Mine();
+	void Mine();
 	void UserInfo(std::string);
 	void initializeCmp();
 	void creteUser();

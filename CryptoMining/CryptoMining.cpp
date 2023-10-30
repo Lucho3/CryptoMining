@@ -14,9 +14,9 @@ const int setGlobalMenu()  {
     std::cout << "2. Mine\n";
     std::cout << "3. User Info\n";
     std::cout << "4. Shutdown\n";
-    int choice;
-    std::cin >> choice;
-    return choice;
+    std::string choice;
+    std::getline(std::cin, choice);
+    return std::stoi(choice);
 }
 
 
@@ -26,22 +26,26 @@ void startApp(Controller * ctrl) {
         switch (setGlobalMenu()) {
         case 0:
             ctrl->creteUser();
+            std::getchar();
             break;
         case 1:
             ctrl->initializeCmp();
+            std::getchar();
             break;
         case 2:
             ctrl->Mine();
+            std::getchar();
             break;
         case 3:
+            std::system("cls");
             std::cout << "Enter username: ";
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::getline(std::cin, username);
             ctrl->UserInfo(username);
             std::getchar();
             break;
         case 4:
             ctrl->Shutdown();
+            std::getchar();
             return;
         default:
             std::cout << "Invalid choice. Please select a valid option.\n";
@@ -52,6 +56,7 @@ void startApp(Controller * ctrl) {
 int main()
 {
     //singleton best here
+    //ne kombinirame getline s cin>>promenliva ako ne znaem kakvo pravim
     Controller* ctrl = new Controller();
     startApp(ctrl);
     delete ctrl;
