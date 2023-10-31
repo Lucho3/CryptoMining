@@ -32,7 +32,5 @@ std::ostream& VideoCard::print(std::ostream& os) const {
 	os << "  RAM: " << ram << " GB" << std::endl;
 	os << "  Mined Money Per Hour: $" << mindeMoneyPerHour << std::endl;
 
-	os << std::endl;
-
 	return os;
 }

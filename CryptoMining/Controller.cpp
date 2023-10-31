@@ -5,7 +5,7 @@
 #include "videocard_type.h"
 
 Controller::Controller() {
-    this->minedAmountDaily = 0;
+    this->minedAmount = 0;
 }
 
 template <typename Container>
@@ -66,7 +66,7 @@ void Controller::Mine() {
         try {
             minedMoney = us->getComputer()->getMinedAmountPerHour() * 24;
             us->increaseMoney(minedMoney);
-            this->minedAmountDaily += minedMoney;
+            this->minedAmount += minedMoney;
             us->getComputer()->getProcessor()->drainLife(24);
             us->getComputer()->getVideoCard()->drainLife(24);
             std::cout << "Mined amount: " << minedMoney << std::endl;
@@ -76,7 +76,7 @@ void Controller::Mine() {
         }
     }
 
-    std::cout << "Daily profits: " << this->minedAmountDaily << "!" << std::endl;
+    std::cout << "Profits: " << this->minedAmount << "!" << std::endl;
 }
 
 void Controller::UserInfo(std::string name) {
@@ -117,7 +117,6 @@ void Controller::CreateComputer(std::string name, std::string procType, std::str
     catch (const std::invalid_argument& ex) {
         std::cout << "The computer wasnt created!";
     }
-    
 }
 
 void Controller::initializeCmp() {
@@ -174,7 +173,7 @@ void Controller::initializeCmp() {
 
     std::system("cls");
     std::string ram;
-    std::cout << "Enter vide card RAM: ";
+    std::cout << "Enter video card RAM: ";
     std::getline(std::cin, ram);
     int ramV = std::stoi(ram);
     ram = std::any_cast<int>(Common::validate(ramV, "RAM", "the vide card generation "));

@@ -9,7 +9,7 @@
 class Controller  {
 private:
 	std::vector<std::shared_ptr<User>> users;
-	double minedAmountDaily;
+	double minedAmount;
 	std::shared_ptr<User> checkName(std::string);
 	template <typename Container>
 	void ClearList(Container&);
